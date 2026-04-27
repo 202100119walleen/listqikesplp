@@ -191,7 +191,7 @@ export default function HomePage() {
                 Soporte de agente licenciado desde la publicacion hasta la negociacion y el cierre.
               </p>
               <p className="planPrice">1%</p>
-              <p className="planSub">Al cierre</p>
+              <p className="planSub">Tarifa de $199 + 1% al cierre</p>
               <a href="#seller" className="btn btnSecondary wide">
                 Habla con un agente
               </a>
