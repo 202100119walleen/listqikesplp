@@ -938,24 +938,24 @@ input:focus-visible {
 
 .offerModal {
   position: relative;
-  width: min(400px, 100%);
+  width: min(470px, 100%);
   border-radius: 16px;
-  padding: 1.25rem 1.15rem 1.15rem;
-  border: 1px solid rgba(39, 93, 79, 0.95);
-  background: #081713;
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.34);
+  padding: 1.15rem 1rem 1rem;
+  border: 1px solid rgba(35, 109, 90, 0.95);
+  background: linear-gradient(160deg, #03130f 0%, #041a14 100%);
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.4);
 }
 
 .offerModalClose {
   position: absolute;
   top: 0.62rem;
   right: 0.62rem;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 999px;
-  border: 1px solid #2f6657;
-  color: #bfe7da;
-  background: #0d241e;
+  border: 1px solid #246b58;
+  color: #d1f4e8;
+  background: rgba(8, 41, 33, 0.9);
   font-size: 1.05rem;
   line-height: 1;
   cursor: pointer;
@@ -964,39 +964,60 @@ input:focus-visible {
 
 .offerModalClose:hover {
   transform: none;
-  background: #133229;
-  border-color: #3f7e6c;
+  background: #114034;
+  border-color: #2f8a72;
+}
+
+.offerModalKicker {
+  margin: 0 0 0.55rem;
+  color: #8dc9b7;
+  font-size: 0.83rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .offerModal h3 {
   margin: 0;
-  color: #d5f1e8;
-  font-size: clamp(1.35rem, 3.7vw, 1.65rem);
-  line-height: 1.2;
-  max-width: 12ch;
+  color: #d7f3eb;
+  font-size: clamp(1.9rem, 4.4vw, 2.35rem);
+  line-height: 1.1;
+  max-width: 16ch;
   font-weight: 700;
 }
 
-.offerModal p {
-  margin: 0.5rem 0 1rem;
+.offerModalLead {
+  margin: 0.62rem 0 0.85rem;
   color: #9ec6b9;
   font-size: 0.9rem;
-  max-width: 30ch;
+  max-width: 32ch;
+}
+
+#offer-modal-description {
+  margin: 0 0 0.95rem;
+  color: #9fd8c7;
+  font-size: 1rem;
+  border: 1px dashed rgba(58, 169, 139, 0.72);
+  border-radius: 12px;
+  background: rgba(14, 55, 44, 0.32);
+  padding: 0.7rem 0.8rem;
 }
 
 .offerModal .btn {
-  min-width: 136px;
+  width: 100%;
   text-align: center;
   display: inline-flex;
   justify-content: center;
-  padding: 0.62rem 0.92rem;
+  padding: 0.78rem 0.92rem;
   box-shadow: none;
-  border: 1px solid #2e7562;
-  background: #1ab88a;
+  border: 1px solid #2fcda2;
+  background: #2ad0a5;
+  color: #eafff8;
+  font-size: 1.02rem;
 }
 
 .offerModal .btn:hover {
-  background: #16a87d;
+  background: #23bf97;
 }
 
 .offerFloatingButton {

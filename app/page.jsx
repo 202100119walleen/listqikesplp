@@ -316,7 +316,11 @@ export default function HomePage() {
             >
               ×
             </button>
+            <p className="offerModalKicker">EXCLUSIVE BONUS</p>
             <h3 id="offer-modal-title">Get a FREE Gift</h3>
+            <p className="offerModalLead">
+              Get a free gift when you start your listing today.
+            </p>
             <p id="offer-modal-description">
               Free gift will be applied automatically.
             </p>
