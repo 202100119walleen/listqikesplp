@@ -1,14 +1,41 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const avatarSampleVideo =
   "https://res.cloudinary.com/dowcybzve/video/upload/v1776948978/LISTQIK_Inro_-_V2_ESP_Ver_2_jzrl95.mp4";
 
 export default function HomePage() {
   const avatarVideoRef = useRef(null);
+  const claimOfferButtonRef = useRef(null);
   const [avatarMuted, setAvatarMuted] = useState(true);
   const [navOpen, setNavOpen] = useState(false);
+  const [offerOpen, setOfferOpen] = useState(false);
+  const [offerDismissed, setOfferDismissed] = useState(false);
+
+  useEffect(() => {
+    const openTimer = setTimeout(() => {
+      setOfferOpen(true);
+    }, 1800);
+
+    return () => clearTimeout(openTimer);
+  }, []);
+
+  useEffect(() => {
+    if (!offerOpen) return;
+
+    claimOfferButtonRef.current?.focus();
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setOfferOpen(false);
+        setOfferDismissed(true);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [offerOpen]);
 
   const toggleAvatarSound = () => {
     const video = avatarVideoRef.current;
@@ -20,6 +47,11 @@ export default function HomePage() {
       video.play().catch(() => {});
     }
     setAvatarMuted(nextMuted);
+  };
+
+  const closeOfferModal = () => {
+    setOfferOpen(false);
+    setOfferDismissed(true);
   };
 
   return (
@@ -133,8 +165,11 @@ export default function HomePage() {
               <p className="planCopy">
                 Todo lo que necesitas para publicar en MLS y vender en tus terminos.
               </p>
-              <p className="planPrice">$99</p>
-              <p className="planSub">$99 / .5%</p>
+              <p className="planPrice" aria-label="Precio promocional de Subsonic">
+                <span className="planPriceOriginal">$99</span>
+                <span className="planPricePromo">$79</span>
+              </p>
+              <p className="planSub">$79 / .5%</p>
               <a href="#seller" className="btn btnPrimary wide">
                 Obtener Subsonic
               </a>
@@ -258,6 +293,55 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {offerOpen ? (
+        <div
+          className="offerModalOverlay"
+          role="presentation"
+          onClick={closeOfferModal}
+        >
+          <section
+            className="offerModal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="offer-modal-title"
+            aria-describedby="offer-modal-description"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="offerModalClose"
+              aria-label="Close offer popup"
+              onClick={closeOfferModal}
+            >
+              ×
+            </button>
+            <h3 id="offer-modal-title">Get a FREE Gift</h3>
+            <p id="offer-modal-description">
+              Free gift will be applied automatically.
+            </p>
+            <a
+              href="#compare"
+              className="btn btnPrimary"
+              onClick={closeOfferModal}
+              ref={claimOfferButtonRef}
+            >
+              Claim offer
+            </a>
+          </section>
+        </div>
+      ) : null}
+
+      {offerDismissed && !offerOpen ? (
+        <button
+          type="button"
+          className="offerFloatingButton"
+          onClick={() => setOfferOpen(true)}
+          aria-label="Reopen offer popup"
+        >
+          Claim offer
+        </button>
+      ) : null}
     </>
   );
 }

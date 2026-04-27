@@ -561,6 +561,18 @@
   font-weight: 800;
 }
 
+.planPriceOriginal {
+  text-decoration: line-through;
+  color: #7ca697;
+  font-size: 1.5rem;
+  margin-right: 0.55rem;
+  font-weight: 700;
+}
+
+.planPricePromo {
+  color: #e6fff6;
+}
+
 .planSub {
   margin: 0.4rem 0 1rem;
   color: var(--ink-500);
@@ -913,6 +925,100 @@ input:focus-visible {
   color: #fff;
 }
 
+.offerModalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 220;
+  background: rgba(2, 10, 8, 0.42);
+  backdrop-filter: blur(2px);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.offerModal {
+  position: relative;
+  width: min(400px, 100%);
+  border-radius: 16px;
+  padding: 1.25rem 1.15rem 1.15rem;
+  border: 1px solid rgba(39, 93, 79, 0.95);
+  background: #081713;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.34);
+}
+
+.offerModalClose {
+  position: absolute;
+  top: 0.62rem;
+  right: 0.62rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid #2f6657;
+  color: #bfe7da;
+  background: #0d241e;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.offerModalClose:hover {
+  transform: none;
+  background: #133229;
+  border-color: #3f7e6c;
+}
+
+.offerModal h3 {
+  margin: 0;
+  color: #d5f1e8;
+  font-size: clamp(1.35rem, 3.7vw, 1.65rem);
+  line-height: 1.2;
+  max-width: 12ch;
+  font-weight: 700;
+}
+
+.offerModal p {
+  margin: 0.5rem 0 1rem;
+  color: #9ec6b9;
+  font-size: 0.9rem;
+  max-width: 30ch;
+}
+
+.offerModal .btn {
+  min-width: 136px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  padding: 0.62rem 0.92rem;
+  box-shadow: none;
+  border: 1px solid #2e7562;
+  background: #1ab88a;
+}
+
+.offerModal .btn:hover {
+  background: #16a87d;
+}
+
+.offerFloatingButton {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 180;
+  border: 1px solid #2b6758;
+  border-radius: 999px;
+  background: rgba(7, 30, 24, 0.94);
+  color: #d7fff1;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.5rem 0.82rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.offerFloatingButton:hover {
+  background: #134235;
+}
+
 .reveal {
   opacity: 1;
   transform: none;
@@ -1024,6 +1130,11 @@ input:focus-visible {
 
   .footerGrid {
     grid-template-columns: 1fr;
+  }
+
+  .offerFloatingButton {
+    right: 0.75rem;
+    bottom: 0.75rem;
   }
 }
 
